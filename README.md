@@ -74,12 +74,14 @@ Found in the `./terraform/modules/eks` directory, the EKS module provisions the 
 ## Getting Started
 
 1. **Setup AWS Credentials**: Ensure you have your AWS credentials setup, either using the AWS CLI or environment variables.
+---
 
 2. **Initialize Terraform**:
    ```
    cd terraform
    terraform init
    ```
+---  
 
 3. **Apply Terraform**:
    ```
@@ -95,7 +97,7 @@ Found in the `./terraform/modules/eks` directory, the EKS module provisions the 
     -  With the network set, the EKS module then starts by setting up IAM roles and policies.
     -  Once IAM is ready, the EKS cluster is provisioned.
     -  Finally, the EKS node group, the actual EC2 instances running the Kubernetes workloads, is set up and linked to the EKS cluster.
-
+---
 
 4. **Accessing the EKS Cluster**:
 
@@ -106,7 +108,6 @@ aws eks --region [REGION] update-kubeconfig --name [CLUSTER_NAME]
 ```
 
 Replace `[REGION]` with your AWS region and `[CLUSTER_NAME]` with the name of your EKS cluster. This command configures `kubectl` to communicate with your newly created EKS cluster.
-
 ---
 
 5. **Deploy to Kubernetes**:
