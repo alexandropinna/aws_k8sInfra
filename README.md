@@ -96,7 +96,18 @@ When `terraform apply` is run:
 4. Once IAM is ready, the EKS cluster is provisioned.
 5. Finally, the EKS node group, the actual EC2 instances running the Kubernetes workloads, is set up and linked to the EKS cluster.
 
-4. **Deploy to Kubernetes**:
+4.**Accessing the EKS Cluster**:
+Once the EKS cluster is provisioned, accessing it requires updating your local `kubeconfig`. Execute the following AWS CLI command:
+
+```
+aws eks --region [REGION] update-kubeconfig --name [CLUSTER_NAME]
+```
+
+Replace `[REGION]` with your AWS region and `[CLUSTER_NAME]` with the name of your EKS cluster. This command configures `kubectl` to communicate with your newly created EKS cluster.
+
+---
+
+5. **Deploy to Kubernetes**:
    ```
    kubectl apply -f deployments.yml
    kubectl apply -f services-lb.yaml
