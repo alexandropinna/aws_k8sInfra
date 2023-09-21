@@ -1,0 +1,75 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-test
+  template:
+    metadata:
+      labels:
+        app: apache-test
+    spec:
+      containers:
+      - name: apache-test
+        image: alex919090/apache_test:latest
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-test
+  template:
+    metadata:
+      labels:
+        app: dotnet-test
+    spec:
+      containers:
+      - name: dotnet-test
+        image: alex919090/dotnet_test:latest
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maven-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maven-test
+  template:
+    metadata:
+      labels:
+        app: maven-test
+    spec:
+      containers:
+      - name: maven-test
+        image: alex919090/maven_test:latest
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-test
+  template:
+    metadata:
+      labels:
+        app: java-test
+    spec:
+      containers:
+      - name: java-test
+        image: alex919090/java_test:latest

@@ -2,7 +2,7 @@
 
 # ID of the public subnet
 output "eks_subnet_ids" {
-  value = concat(aws_subnet.public_subnet[*].id, aws_subnet.private_subnet[*].id)
+  value       = concat(aws_subnet.public_subnet[*].id, aws_subnet.private_subnet[*].id)
   description = "The IDs of the subnets in the VPC"
 }
 

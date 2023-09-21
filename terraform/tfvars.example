@@ -1,25 +1,34 @@
+# Define tags to be applied to AWS resources.
 tags = {
-  "env"         = "dev"
-  "owner"       = "Alejandro Pina"
-  "cloud"       = "AWS"
-  "IAC"         = "Terraform"
-  "IAC_Version" = "1.5.5"
-  "project"     = "aws_test"
-  "region"      = "virginia"
+  "env"         = "dev"                  # Environment tag, indicating this is a development environment.
+  "owner"       = "Alejandro Pina"       # Owner of the resources.
+  "cloud"       = "AWS"                  # Cloud provider tag.
+  "IAC"         = "Terraform"            # Infrastructure as Code tool used.
+  "IAC_Version" = "1.5.5"                # Version of the IAC tool.
+  "project"     = "aws_test"             # Project name tag.
+  "region"      = "virginia"             # AWS region.
 }
 
+# CIDR block for the VPC in the Virginia region.
 virginia_cidr = "10.10.0.0/16"
 
+# List of availability zones (AZs) where subnets will be created.
 azs = ["us-east-1a","us-east-1b","us-east-1c"]
 
+# List of CIDR blocks for creating private subnets within the specified availability zones.
 private_subnet = ["10.10.0.0/24", "10.10.1.0/24", "10.10.2.0/24"]
+
+# List of CIDR blocks for creating public subnets within the specified availability zones.
 public_subnet = ["10.10.3.0/24", "10.10.4.0/24", "10.10.5.0/24"]
 
+# List of port numbers that will be allowed for incoming traffic (ingress) to the security group.
 ingress_ports_list = [22, 80, 443]
 
+# CIDR block that specifies which IP addresses are allowed to initiate incoming traffic (ingress).
 sg_ingress_cidr = "0.0.0.0/0"
 
+# List of port numbers that will be allowed for outgoing traffic (egress) from the security group.
 egress_ports_list = [22, 80, 443]
 
+# CIDR block that specifies which IP addresses the VPC resources can communicate with for outgoing traffic (egress).
 sg_egress_cidr = "0.0.0.0/0"
-
