@@ -86,17 +86,19 @@ Found in the `./terraform/modules/eks` directory, the EKS module provisions the 
    terraform apply
    ```
 
-### **Workflow Perspective**
+**Workflow Perspective**
 
-When `terraform apply` is run:
+    When `terraform apply` is run:
+    
+    -  The VPC is created first since it's the foundational network layer.
+    -  The Security Group is provisioned next, defining the traffic rules within the VPC.
+    -  With the network set, the EKS module then starts by setting up IAM roles and policies.
+    -  Once IAM is ready, the EKS cluster is provisioned.
+    -  Finally, the EKS node group, the actual EC2 instances running the Kubernetes workloads, is set up and linked to the EKS cluster.
 
-1. The VPC is created first since it's the foundational network layer.
-2. The Security Group is provisioned next, defining the traffic rules within the VPC.
-3. With the network set, the EKS module then starts by setting up IAM roles and policies.
-4. Once IAM is ready, the EKS cluster is provisioned.
-5. Finally, the EKS node group, the actual EC2 instances running the Kubernetes workloads, is set up and linked to the EKS cluster.
 
-4.**Accessing the EKS Cluster**:
+4. **Accessing the EKS Cluster**:
+
 Once the EKS cluster is provisioned, accessing it requires updating your local `kubeconfig`. Execute the following AWS CLI command:
 
 ```
