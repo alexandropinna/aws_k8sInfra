@@ -1,0 +1,25 @@
+tags = {
+  "env"         = "dev"
+  "owner"       = "Alejandro Pina"
+  "cloud"       = "AWS"
+  "IAC"         = "Terraform"
+  "IAC_Version" = "1.5.5"
+  "project"     = "aws_test"
+  "region"      = "virginia"
+}
+
+virginia_cidr = "10.10.0.0/16"
+
+azs = ["us-east-1a","us-east-1b","us-east-1c"]
+
+private_subnet = ["10.10.0.0/24", "10.10.1.0/24", "10.10.2.0/24"]
+public_subnet = ["10.10.3.0/24", "10.10.4.0/24", "10.10.5.0/24"]
+
+ingress_ports_list = [22, 80, 443]
+
+sg_ingress_cidr = "0.0.0.0/0"
+
+egress_ports_list = [22, 80, 443]
+
+sg_egress_cidr = "0.0.0.0/0"
+

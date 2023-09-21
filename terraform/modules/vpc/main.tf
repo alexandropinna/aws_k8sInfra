@@ -8,40 +8,12 @@ resource "aws_vpc" "vpc_virginia" {
   }
 }
 
-# --- Subnets ---
-# resource "aws_subnet" "eks_subnet_1" {
-#   vpc_id                  = aws_vpc.vpc_virginia.id
-#   cidr_block              = var.subnets[0]
-#   availability_zone = "us-east-1a"
-#   tags = {
-#     "Name" = "eks_subnet_1-${local.sufix}"
-#   }
-# }
-
-# resource "aws_subnet" "eks_subnet_2" {
-#   vpc_id            = aws_vpc.vpc_virginia.id
-#   cidr_block        = var.subnets[1]
-#   availability_zone = "us-east-1b"
-#   tags = {
-#     "Name" = "eks_subnet_2-${local.sufix}"
-#   }
-# }
-
-# # Create the second subnet for RDS in the VPC
-# resource "aws_subnet" "eks_subnet_3" {
-#   vpc_id            = aws_vpc.vpc_virginia.id
-#   cidr_block        = var.subnets[2]
-#   availability_zone = "us-east-1c"
-#   tags = {
-#     "Name" = "eks_subnet_3-${local.sufix}"
-#   }
-# }
-
 resource "aws_subnet" "private_subnet" {
   count = length(var.private_subnet)
   vpc_id     = aws_vpc.vpc_virginia.id
   cidr_block = var.private_subnet[count.index]
   availability_zone = var.azs[count.index]
+  map_public_ip_on_launch = true 
   tags = {
     Name = "eks_private_subnet-${local.sufix}"
   }
@@ -52,6 +24,7 @@ resource "aws_subnet" "public_subnet" {
   vpc_id     = aws_vpc.vpc_virginia.id
   cidr_block = var.public_subnet[count.index]
   availability_zone = var.azs[count.index]
+  map_public_ip_on_launch = true 
   tags = {
     Name = "eks_public_subnet-${local.sufix}"
   }
